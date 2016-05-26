@@ -1,4 +1,5 @@
-  <ion-view view-title="<img src='./img/assets/logo-45.png'/> ">
+  <!--<ion-view view-title="<img src='./img/assets/logo-45.png'/> ">-->
+    <ion-view view-title="Verify ">
     <ion-content class="padding">
 
     <button class="button button-full button-energized " ng-click="scanBarcode()"> Scan Code </button>
@@ -9,9 +10,7 @@
 <button class='button button-full button-light'>
 <img ng-src='img/assets/tap-to-scan.png'/>
 </button>
-
-
-
+ 
     <div class=" verify-card" ng-show="product">
         <div class="row">
           <div class="col verify-label">
@@ -25,6 +24,7 @@
          <div class="row">
           <div class="col verify-label">
             Manufacturer
+            
           </div>
           <div class="col verify-field">
           {{product.manufacturer}}

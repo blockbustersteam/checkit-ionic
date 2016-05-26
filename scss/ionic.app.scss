@@ -16,6 +16,10 @@ $dark:                            #444 !default;
 */
 
 // The path for our ionicons font files, relative to the built CSS in www/css
+$dark2: #808080;
+$dark: #262626;
+$maingrey: #46444c;
+
 $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 // Include all of Ionic
@@ -42,6 +46,7 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
     background: $light;
     padding: 10px; 
     max-width: 600px;
+	margin-top: 10px;
 }
 
 .background-purple {
@@ -49,8 +54,96 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 		background-color: $royal;
 
 }
+.background-maingrey {
+	
+		background-color: $maingrey;
+
+}
+.background-dark {
+	
+		background-color: $dark;
+
+}
 
 .checkit-verify-logo{
 max-width:100%;
 
 }
+
+.verify-productname{
+color: $energized;
+	font-size: 24px;
+	display: block;
+	line-height: 26px;
+	
+}
+.verify-manufacturer{
+	color: $energized;
+	font-size: 16px;
+	display: block;
+	padding-top: 4px;
+	
+}
+
+.col-icon{
+	
+	text-align: center;
+padding-top: 10px;
+}
+i.verify-med-icon{
+	font-size: 48px;
+	color: $stable;
+	//padding-top: 20px;
+//margin: auto;
+
+}
+
+.row-dark{
+	background-color: $dark;
+	padding-top: 10px !important;
+	padding-bottom: 10px !important;
+}
+.row-dark2{
+		background-color: $maingrey;
+		padding-top: 10px !important;
+		padding-bottom: 10px !important;
+
+}
+
+.verify-tracked-location-label{
+	font-size: 16px;
+	color: $light;
+	
+	
+}
+.verify-tracked-location-field{
+	color: $energized;
+	font-size: 16px;
+	
+}
+
+.verify-label-small{
+		font-size: 16px;
+	color: $light;
+	
+
+}
+.verify-field-small{
+		font-size: 16px;
+	color: $energized;
+	
+
+}
+
+.report-button{
+	padding-top: 0px !important;
+	line-height: 20px !important;
+	min-height: 30px;
+	margin-top:10px; 
+	
+}
+span.map-text{
+	color: $light;
+	font-size: 10px;
+}
+

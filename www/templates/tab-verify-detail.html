@@ -1,70 +1,85 @@
-  <ion-view view-title="<img src='./img/assets/logo-45.png'/> ">
-    <ion-content class="padding background-purple">
+  <ion-view view-title="Item Information ">
+    <ion-content class="background-maingrey">
 
     
-
-
+ 
+ 
     <div class=" verify-card" ng-show="product">
-        <div class="row">
-          <div class="col verify-label">
-            Product
-          </div>
-          <div class="col verify-field">
-          {{product.productName}}
-          </div>    
-        </div>
+    
+ <div class="row row-dark2">
+    <div class="col col-20 col-icon">
+        <i class="icon ion-ios-flask verify-med-icon"></i>
 
-         <div class="row">
-          <div class="col verify-label">
-            Manufacturer
-          </div>
-          <div class="col verify-field">
+      </div>
+      <div class="col">
+       <div class="verify-productname">
+          {{product.name}}
+          </div> 
+          <div class="verify-manufacturer">
           {{product.manufacturer}}
-          </div>    
-        </div>
-
-
-         <div class="row">
-          <div class="col verify-label">
-            Batch
-          </div>
-          <div class="col verify-field">
-          {{product.batch}}
-          </div>    
-        </div>
-
-
-         <div class="row">
-          <div class="col verify-label">
-            Expiry
-          </div>
-          <div class="col verify-field">
-          {{product.expiry}}
-          </div>    
-        </div>
-
-         <div class="row">
-         
-          <img class="verify-picture" ng-src='{{product.picture}}'/>
-          </div>    
-                    <div class="row">
-                    <div class="col">
-          <div class="verify-label">
-            Tracked Location: 
-          </div>
-          <div class="verify-field">
-          {{product.trackedLocation}}
-          </div>
-          </div>  
-          </div>
-
-                <div class="row">
-          <div class="col">
-              <button class="button button-energized"> Verify </button>
+          </div>   
           
-              <button class="button button-outline button-light"> That's not where I am </button>
-          </div>  
+          </div> 
+    </div>
+          
+    
+
+  <div class="row row-dark">
+    <div class ="col col-20 col-icon">
+              <i class="icon ion-location verify-med-icon"></i>
+
+      
+      </div>
+      
+      <div class="col col-60">
+        <div class="verify-tracked-location-label">
+          Tracked location:
           </div>
+        <div class="verify-tracked-location-field">
+          {{product.currentowner}}
+          <br/>
+          {{product.location}}
+
+            
+        </div>
+        <div>
+            <button class="button button-outline button-light report-button">Thats not where I am</button>
+            </div>
+        
+        
+        </div>
+  <div class="col col-20 col-icon">
+        <i class="icon ion-map verify-med-icon"> </i>
+         <span class="map-text"> Show Map </span>
+  </div>
+  </div>
+  
+  
+  
+  
+         <div class="row row-dark2">
+        
+        <div class="col col-20 col-icon">
+          <i class="icon ion-ios-information verify-med-icon"></i>
+          
+          </div>
+          <div class="col ">
+
+          
+          <span class="verify-label-small"> Batch: </span>
+          <span class="verify-field-small"> {{product.batchno}} </span>
+          <br/>
+          <span class="verify-label-small"> Expiry: </span> 
+          <span class="verify-field-small"> {{product.expdate}} </span>
+          
+          <img  class="verify-picture" ng-src="{{product.image}}"/>
+          
+          </div>    
+        </div>
+
+
+
+
 
 
         </div>

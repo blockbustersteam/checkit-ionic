@@ -57,19 +57,37 @@ angular.module('starter.services', [])
   var products = [
   {
     id: 0,
-    text: "9310059062371",  
-    format: "EAN_13",
-    productName: "Codral Cold and Flu",
     manufacturer: "Johnson & Johnson",
-    batch: "650783",
-    expiry: "Dec 2018",
-    picture: 'img/products/codral-day-night.png',
-    trackedLocation: "Chemist Warehouse, Lane Cove"
+    //picture: 'img/products/codral-day-night.png',
+    location: "123 Fake, St Lane Cove, Australia",
+    origin: "Australia",
+    scancount: "",
+  "barcode":"9300605042421",
+  "name":"Nivea Soft Moisturising Cream",
+  "image":"img/products/codral-day-night.png",
+  "expdate":"n/a",
+  "batchno":"54830974",
+  currentowner: "Chemist Warehouse"
+ 
+ 
   }
 
 
   ];
 
+//    {  
+  
+  // id: 0,
+//     barcode: "9310059062371",  
+//     format: "EAN_13",
+//     productName: "Codral Cold and Flu",
+//     manufacturer: "Johnson & Johnson",
+//     batch: "650783",
+//     expiry: "Dec 2018",
+//     picture: 'img/products/codral-day-night.png',
+//     trackedLocation: "Chemist Warehouse, Lane Cove"
+// }
+    
   return {
     all: function() {
       return products;
@@ -85,15 +103,14 @@ angular.module('starter.services', [])
       }
       return null;
     },
-        getByBarcode: function(inputText, inputFormat) {
+        getByBarcode: function(inputText) {
+          console.log('service; Getting by barcode: ', inputText)
       for (var i = 0; i < products.length; i++) {
-        if (products[i].format === inputFormat) {
-          if(products[i].text === inputText){
-
-          
-          return products[i];
+        //if (products[i].format === inputFormat) {
+          if(products[i].barcode === inputText){          
+            return products[i];
           }
-        }
+        
       }
       
   }

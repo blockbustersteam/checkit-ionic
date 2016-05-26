@@ -48,7 +48,7 @@ angular.module('starter.controllers', [])
 //   };
 // })
 
-.controller('VerifyCtrl', function($scope, $stateParams, $cordovaBarcodeScanner, Products, $location) {
+.controller('VerifyCtrl', function($scope, $stateParams, $cordovaBarcodeScanner, Products, $location, $http) {
   //$scope.chat = Chats.get($stateParams.chatId);
 
   //   document.addEventListener("deviceready", function () {
@@ -76,14 +76,26 @@ $scope.product=null;
 
   $scope.scanBarcodeStub = function() {
       $scope.barcode={
-          "text": "9310059062371",
+          //"text": "Q0SRQGNM18KCXW7",
+          "text": "9300605042421",
           "format": "EAN_13",
           "cancelled": false
       }
-      $scope.product = Products.getByBarcode($scope.barcode.text, $scope.barcode.format);
+      $scope.product = Products.getByBarcode($scope.barcode.text);
+                var config = {
+                headers : {
+                    //'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+                }
+            }
+            
+      // $http.post('http://checkit-web-kathyz-013.mybluemix.net/getItemsWithID', $scope.barcode.text, config).then(function(resp) {
+      //   console.log(resp.data);
+      // })
+      
       
 //How to scope out 
-$location.path('/verify-detail/'+$scope.barcode.text)
+  $location.path('/tab/verify-detail/'+$scope.barcode.text);
 //$location.path('/tab/verify-detail/')
 
   }
@@ -183,8 +195,13 @@ $scope.getItemDetails = function(cData) {
     })
   };
 
-
-
+$scope.item = {
+  "barcode":"9300605042421",
+  "productname":"Nivea Soft Moisturising Cream",
+  "productimage":"",
+  "expdate":"n/a",
+  "batchno":"54830974"
+}
 
   
 $scope.clearProduct = function(){
@@ -195,9 +212,12 @@ $scope.clearProduct = function(){
 })
 
 
-.controller('VerifyDetailCtrl', function($scope, $stateParams) {
+.controller('VerifyDetailCtrl', function($scope, $stateParams, Products) {
 
-
+$scope.itemId=$stateParams.itemId;
+      $scope.product = Products.getByBarcode($scope.itemId);
+      console.log($scope.itemId)
+      console.log($scope.product)
 })
 
 
