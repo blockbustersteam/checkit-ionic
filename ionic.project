@@ -1,0 +1,12 @@
+{
+  "name": "checkIT",
+  "app_id": "ecdc088d",
+  "gulpStartupTasks": [
+    "sass",
+    "watch"
+  ],
+  "watchPatterns": [
+    "www/**/*",
+    "!www/lib/**/*"
+  ]
+}

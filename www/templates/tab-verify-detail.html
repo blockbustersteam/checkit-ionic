@@ -1,0 +1,85 @@
+  <ion-view view-title="<img src='./img/assets/logo-45.png'/> ">
+    <ion-content class="padding background-purple">
+
+    
+
+
+    <div class=" verify-card" ng-show="product">
+        <div class="row">
+          <div class="col verify-label">
+            Product
+          </div>
+          <div class="col verify-field">
+          {{product.productName}}
+          </div>    
+        </div>
+
+         <div class="row">
+          <div class="col verify-label">
+            Manufacturer
+          </div>
+          <div class="col verify-field">
+          {{product.manufacturer}}
+          </div>    
+        </div>
+
+
+         <div class="row">
+          <div class="col verify-label">
+            Batch
+          </div>
+          <div class="col verify-field">
+          {{product.batch}}
+          </div>    
+        </div>
+
+
+         <div class="row">
+          <div class="col verify-label">
+            Expiry
+          </div>
+          <div class="col verify-field">
+          {{product.expiry}}
+          </div>    
+        </div>
+
+         <div class="row">
+         
+          <img class="verify-picture" ng-src='{{product.picture}}'/>
+          </div>    
+                    <div class="row">
+                    <div class="col">
+          <div class="verify-label">
+            Tracked Location: 
+          </div>
+          <div class="verify-field">
+          {{product.trackedLocation}}
+          </div>
+          </div>  
+          </div>
+
+                <div class="row">
+          <div class="col">
+              <button class="button button-energized"> Verify </button>
+          
+              <button class="button button-outline button-light"> That's not where I am </button>
+          </div>  
+          </div>
+
+
+        </div>
+
+         
+        
+
+
+    </div>
+
+     <pre>{{barcode  |json}}</pre>
+      <pre>{{product  |json}}</pre> 
+    </ion-content>
+
+
+  </ion-view>
+
+
