@@ -47,4 +47,54 @@ angular.module('starter.services', [])
       return null;
     }
   };
-});
+})
+
+
+
+.factory('Products', function() {
+
+  // Stubbing until webservices available
+  var products = [
+  {
+    id: 0,
+    text: "9310059062371",  
+    format: "EAN_13",
+    productName: "Codral Cold and Flu",
+    manufacturer: "Johnson & Johnson",
+    batch: "650783",
+    expiry: "Dec 2018",
+    picture: 'img/products/codral-day-night.png',
+    trackedLocation: "Chemist Warehouse, Lane Cove"
+  }
+
+
+  ];
+
+  return {
+    all: function() {
+      return products;
+    },
+    remove: function(chat) {
+      chats.splice(chats.indexOf(chat), 1);
+    },
+    get: function(productId) {
+      for (var i = 0; i < products.length; i++) {
+        if (products[i].id === parseInt(productId)) {
+          return products[i];
+        }
+      }
+      return null;
+    },
+        getByBarcode: function(inputText, inputFormat) {
+      for (var i = 0; i < products.length; i++) {
+        if (products[i].format === inputFormat) {
+          if(products[i].text === inputText){
+
+          
+          return products[i];
+          }
+        }
+      }
+      
+  }
+}});
