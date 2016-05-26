@@ -102,7 +102,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
 
 
     .state('tab.verify-detail', {
-    url: '/verify-detail/:itemId',
+    //url: '/verify-detail/:itemId',
+  url: '/verify-detail/:itemId',
     views: {
       'tab-verify': {
         templateUrl: 'templates/tab-verify-detail.html',

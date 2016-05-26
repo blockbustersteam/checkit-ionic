@@ -48,7 +48,7 @@ angular.module('starter.controllers', [])
 //   };
 // })
 
-.controller('VerifyCtrl', function($scope, $stateParams, $cordovaBarcodeScanner, Products) {
+.controller('VerifyCtrl', function($scope, $stateParams, $cordovaBarcodeScanner, Products, $location) {
   //$scope.chat = Chats.get($stateParams.chatId);
 
   //   document.addEventListener("deviceready", function () {
@@ -81,8 +81,10 @@ $scope.product=null;
           "cancelled": false
       }
       $scope.product = Products.getByBarcode($scope.barcode.text, $scope.barcode.format);
+      
 //How to scope out 
-$location.path('/tab-verify-detai')
+$location.path('/tab/verify-detail/'+$scope.barcode.text)
+//$location.path('/tab/verify-detail/')
 
   }
 
@@ -92,7 +94,9 @@ $location.path('/tab-verify-detai')
             alert(imageData.text);
             console.log("Barcode Format -> " + imageData.format);
             console.log("Cancelled -> " + imageData.cancelled);
+            
             $scope.product = Products.getByBarcode($scope.barcode.text, $scope.barcode.format);
+$scope.product = $http.post()
 
         }, function(error) {
             console.log("An error happened -> " + error);
@@ -109,6 +113,14 @@ $scope.clearProduct = function(){
 
 
 })
+
+.controller('VerifyDetailCtrl', function($scope, $stateParams) {
+
+
+})
+
+
+
 .controller('WalletCtrl', function($scope, $stateParams) {
   //$scope.chat = Chats.get($stateParams.chatId);
 })
