@@ -67,6 +67,7 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 .checkit-verify-logo{
 max-width:100%;
+margin-top: 70px;
 
 }
 
@@ -147,3 +148,40 @@ span.map-text{
 	font-size: 10px;
 }
 
+.verify-count-label{
+	
+font-size: 12px;
+color: $light;
+}
+
+.verify-count-field{
+	margin-top: 10px;
+	font-size: 26px;
+}
+
+.icon-small{
+	
+	font-size: 10px !important;
+}
+
+.amber{
+	color: darkorange;
+}
+
+.scan-div{
+text-align: center;
+}
+
+.location-div{
+	margin-top: 80px;
+}
+
+
+.top-middle{
+	text-align: center;
+}
+
+.result-icon{
+	
+	font-size: 36px;
+}

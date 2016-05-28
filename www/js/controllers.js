@@ -15,111 +15,69 @@ angular.module('starter.controllers', [])
 
 .controller('LoginCtrl', function($scope, $state){
   console.log('Testing')
-  $scope.signIn = function(){
+  $scope.signIn = function(user){
     $state.go('tab.verify');
-      console.log('signing in');
+      console.log('signing in');      
   }
 })
 
 .controller('DashCtrl', function($scope) {})
 
-// .controller('ChatsCtrl', function($scope, Chats) {
-//   // With the new view caching in Ionic, Controllers are only called
-//   // when they are recreated or on app start, instead of every page change.
-//   // To listen for when this page is active (for example, to refresh data),
-//   // listen for the $ionicView.enter event:
-//   //
-//   //$scope.$on('$ionicView.enter', function(e) {
-//   //});
-
-//   $scope.chats = Chats.all();
-//   $scope.remove = function(chat) {
-//     Chats.remove(chat);
-//   };
-// })
-
-// .controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
-//   $scope.chat = Chats.get($stateParams.chatId);
-// })
-
-// .controller('AccountCtrl', function($scope) {
-//   $scope.settings = {
-//     enableFriends: true
-//   };
-// })
-
 .controller('VerifyCtrl', function($scope, $stateParams, $cordovaBarcodeScanner, Products, $location, $http) {
-  //$scope.chat = Chats.get($stateParams.chatId);
+ 
+            window.localStorage.setItem( 'stubscancount', 1 );
+   
+    
+            $scope.sydney=true;
+            
+            
+             if($scope.sydney){
+                window.localStorage.setItem( 'userlocation', 'Barangaroo, Sydney, NSW, 2220' );
+                window.localStorage.setItem( 'userdistance', 0.01 );
 
-  //   document.addEventListener("deviceready", function () {
 
-  //   $cordovaBarcodeScanner
-  //     .scan()
-  //     .then(function(barcodeData) {
-  //       // Success! Barcode data is here
-  //     }, function(error) {
-  //       // An error occurred
-  //     });
+            } else {
+                window.localStorage.setItem( 'userlocation', 'Siem Reap, Cambodia ' );
+                window.localStorage.setItem( 'userdistance', 7106 );
+
+            }
+            $scope.updatelocation = function(){
+                
+              $scope.sydney=!$scope.sydney;
+              
+              
+              if($scope.sydney){
+                  window.localStorage.setItem( 'userlocation', 'Barangaroo, Sydney, NSW, 2220' );
+                  window.localStorage.setItem( 'userdistance', 0.01 );
 
 
-  //   // NOTE: encoding not functioning yet
-  //   $cordovaBarcodeScanner
-  //     .encode(BarcodeScanner.Encode.TEXT_TYPE, "http://www.nytimes.com")
-  //     .then(function(success) {
-  //       // Success!
-  //     }, function(error) {
-  //       // An error occurred
-  //     });
+                } else {
+                    window.localStorage.setItem( 'userlocation', 'Siem Reap, Cambodia ' );
+                    window.localStorage.setItem( 'userdistance', 7106 );
 
-  // }, false);
-$scope.product=null;
+                }
+                $scope.userlocation = window.localStorage.getItem('userlocation')
+
+            }
+            
+            
+            
+  $scope.product=null;
 
   $scope.scanBarcodeStub = function() {
+    console.log("inside scan stub")
       $scope.barcode={
-          //"text": "Q0SRQGNM18KCXW7",
-          "text": "9300605042421",
+          "text": "3Z945S5JGV1H3DK",
+          //"text": "9300605042421",
           "format": "EAN_13",
           "cancelled": false
       }
-      $scope.product = Products.getByBarcode($scope.barcode.text);
-                var config = {
-                headers : {
-                    //'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
-                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
-                }
-            }
-            
-      // $http.post('http://checkit-web-kathyz-013.mybluemix.net/getItemsWithID', $scope.barcode.text, config).then(function(resp) {
-      //   console.log(resp.data);
-      // })
-      
-      
-//How to scope out 
-  $location.path('/tab/verify-detail/'+$scope.barcode.text);
-//$location.path('/tab/verify-detail/')
 
+      
+      
+    $location.path('/tab/verify-detail/'+$scope.barcode.text);
+    //$location.path('/tab/verify-detail/')
   }
-
-//   $scope.scanBarcode = function() {
-//         $cordovaBarcodeScanner.scan().then(function(imageData) {
-//           $scope.barcode = imageData;
-//             alert(imageData.text);
-//             console.log("Barcode Format -> " + imageData.format);
-//             console.log("Cancelled -> " + imageData.cancelled);
-            
-//             $scope.product = Products.getByBarcode($scope.barcode.text, $scope.barcode.format);
-// $scope.product = $http.post()
-
-
-
-//         }, function(error) {
-//             console.log("An error happened -> " + error);
-//         });
-        
-
-//     };
-
-//copied over
   $scope.scanBarcode = function() {
    console.log("scan");
       $cordovaBarcodeScanner.scan().then(function(imageData) {
@@ -132,10 +90,14 @@ $scope.product=null;
 
           if(!imageData.cancelled){
             
-            var cData = {itemId:imageData.text}
-                  alert("cData: " + cData);
+           
 
-            $scope.getItemDetails(cData);
+           // $scope.getItemDetails(cData);
+            //  $location.path('/tab/verify-detail/'+ cData);
+            //6CBGMU8E89ZQ4AB
+            // alert(imageData.text)
+             $location.path('/tab/verify-detail/'+ imageData.text);
+
           }
 
       }, function(error) {
@@ -146,62 +108,6 @@ $scope.product=null;
   };
 
 
-$scope.getItemDetails = function(cData) {
-  alert('Connecting to Server')
-      $scope.showLoading();
-      //$http.post(appServerUrl+'getBatch',cData).then(function(resp) {
-      //$http.post('http://sc-web-kathyz-2038.mybluemix.net/'+'getBatch',cData).then(function(resp) {
-  $http.post('192.168.8.106:3000/'+'getItemsWithID',cData).then(function(resp) {
-
-      console.log("--- Get New Batch Details",resp.data);
-      alert('response:' + resp);
-      alert('response.data:' + resp.data);
-
-      var batchDet = resp.data;
-      $scope.batchTransactions = [];
-      $scope.batchItem = {};
-    //   if(batchDet){
-    //     $scope.batchItem = {type:batchDet.bType, id:batchDet.id};
-    //     for(var i=0; i<batchDet.transactions.length; i++){
-    //       var tx = batchDet.transactions[i];
-    //       var litem;
-    //       if(tx.ttype == "CREATE"){
-    //         litem = {avatar:"ion-ios-box-outline", date: tx.vDate, location: tx.location, desc:"ADDED BY ", owner:tx.owner};
-    //       }
-    //       else if(tx.ttype == "CLAIM"){
-    //         litem = {avatar:"ion-ios-barcode-outline", date: tx.vDate, location: tx.location, desc:"PICKED UP BY ", owner:tx.owner};
-    //       }
-    //       else if(tx.ttype == "TRANSFER"){
-    //         litem = {avatar:"ion-ios-shuffle", date: tx.vDate, location: tx.location, desc:"DELIVERED TO ", owner:tx.owner};
-    //       }
-    //       else if(tx.ttype == "SELL" && tx.owner == "CONSUMER"){
-    //         litem = {avatar:"ion-ios-cart-outline", date: tx.vDate, location: tx.location, desc:"SOLD TO ", owner:tx.owner};
-    //       }
-    //       else if(tx.ttype == "UPDATE QUALITY"){
-    //         litem = {ttype:tx.ttype, avatar:"ion-ios-bolt-outline", date: tx.vDate, location: tx.location, desc:"QUALITY IMPACTED DUE TO HIGH T°", owner:""};
-    //       }
-    //       if(litem){
-    //         $scope.batchTransactions.push(litem);
-    //       }
-    //     }
-    //     $scope.hideLoading(); 
-    //     $scope.openTrackerModal();
-    //   }
-     
-    }, function(err) {
-      $scope.hideLoading();
-      console.error('ERR', err);
-      alert("Houston we've got a problem!")
-    })
-  };
-
-$scope.item = {
-  "barcode":"9300605042421",
-  "productname":"Nivea Soft Moisturising Cream",
-  "productimage":"",
-  "expdate":"n/a",
-  "batchno":"54830974"
-}
 
   
 $scope.clearProduct = function(){
@@ -212,12 +118,84 @@ $scope.clearProduct = function(){
 })
 
 
-.controller('VerifyDetailCtrl', function($scope, $stateParams, Products) {
+.controller('VerifyDetailCtrl', function($scope, $stateParams, Products, $http) {
+
 
 $scope.itemId=$stateParams.itemId;
-      $scope.product = Products.getByBarcode($scope.itemId);
+
+        
+            $scope.distance={};
+            $scope.distance.value = window.localStorage.getItem('userdistance');
+            $scope.distance.text = window.localStorage.getItem('userdistance');
+            console.dir($scope.distance)
+            console.log($scope.distance.value);
+            $scope.userlocation = window.localStorage.getItem('userlocation')
+            
+            
+     
+                var config = {
+                headers : {
+                    //'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+                }
+            } 
+            
+         console.log($scope.itemId)
+      //   $http.post('http://192.168.8.115:3000/getItemsWithID', {"itemId": $scope.itemId}, config).then(function(resp) {     
+      //   $http.post('http://checkit-web-final-kathyz-759.mybluemix.net/getItemsWithID', {itemId: $scope.itemId}, config).then(function(resp) {
+
+            //putting fake url so it will timeout faster...
+             $http.post('bbb', {"itemId": $scope.itemId}, config).then(function(resp) {     
+alert('response:')
+            console.log(resp.data);
+            $scope.product=resp.data;
+              
+              
+            //placeholders for now
+            //$scope.product.scancount=0;
+            $scope.product.image = 'img/products/codral-day-night.png';
+
+         //alert($scope.product);
+            var origin = window.localStorage.getItem( 'barangaroo' );
+            var origin = window.localStorage.getItem( 'barangaroo-distance' );
+            var destination = window.localStorage.getItem( 'cambodia-distance');
+            var destination = window.localStorage.getItem( 'cambodia-distance');
+            
+            
+            //var destination = resp.data.location;
+            //var origin="Wynyard, Sydney, NSW, Australia";
+         
+        //  $http.post('http://maps.googleapis.com/maps/api/distancematrix/json?units=metric&origins='+origin+'&destinations='+destination).then(function(resp){          
+        //     console.log(resp.data);
+        //     console.log(resp.data.rows[0].elements[0].distance);
+        //     $scope.distance = resp.data.rows[0].elements[0].distance;
+        //     $scope.distance.value=499;
+            
+        //  })
+       }, function(){
+         
+         console.log('could not connect')
+              //  alert.log('could not connect')
+          $scope.product = Products.getByBarcode($scope.itemId);
+      
+          $scope.product.image = 'img/products/codral-day-night.png';
+          
+          $scope.product.scancount = window.localStorage.getItem( 'stubscancount');
+          //incrementing for demo scan mode
+          window.localStorage.setItem( 'stubscancount', parseInt(window.localStorage.getItem( 'stubscancount')) + 1 );
+      
+   
+         
+         
+       })
+       
+
+         
       console.log($scope.itemId)
       console.log($scope.product)
+      
+      
+      
 })
 
 

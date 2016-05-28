@@ -1,90 +1,27 @@
   <!--<ion-view view-title="<img src='./img/assets/logo-45.png'/> ">-->
-    <ion-view view-title="Verify ">
+    <ion-view view-title="checkIt ">
     <ion-content class="padding">
 
-    <button class="button button-full button-energized " ng-click="scanBarcode()"> Scan Code </button>
-    <button class="button button-full" ng-click="scanBarcodeStub()"> Scan Code Stub (Codral)</button>
-    <button class="button button-full" ng-click="clearProduct()"> Clear </button>
+    <!--<button class="button button-full button-energized " ng-click="scanBarcode()"> Scan Code </button>-->
+    <button class="button button-full" ng-click="scanBarcodeStub()"> Offline mode (Codral demo)</button>
+    <!--<button class="button button-full" ng-click="clearProduct()"> Clear </button>-->
 
 <img ng-src="./img/assets/logo-hd.png" class="checkit-verify-logo"> 
-<button class='button button-full button-light'>
-<img ng-src='img/assets/tap-to-scan.png'/>
-</button>
- 
-    <div class=" verify-card" ng-show="product">
-        <div class="row">
-          <div class="col verify-label">
-            Product
-          </div>
-          <div class="col verify-field">
-          {{product.productName}}
-          </div>    
-        </div>
-
-         <div class="row">
-          <div class="col verify-label">
-            Manufacturer
-            
-          </div>
-          <div class="col verify-field">
-          {{product.manufacturer}}
-          </div>    
-        </div>
-
-
-         <div class="row">
-          <div class="col verify-label">
-            Batch
-          </div>
-          <div class="col verify-field">
-          {{product.batch}}
-          </div>    
-        </div>
-
-
-         <div class="row">
-          <div class="col verify-label">
-            Expiry
-          </div>
-          <div class="col verify-field">
-          {{product.expiry}}
-          </div>    
-        </div>
-
-         <div class="row">
-         
-          <img class="verify-picture" ng-src='{{product.picture}}'/>
-          </div>    
-                    <div class="row">
-                    <div class="col">
-          <div class="verify-label">
-            Tracked Location: 
-          </div>
-          <div class="verify-field">
-          {{product.trackedLocation}}
-          </div>
-          </div>  
-          </div>
-
-                <div class="row">
-          <div class="col">
-              <button class="button button-energized"> Verify </button>
-          
-              <button class="button button-outline button-light"> That's not where I am </button>
-          </div>  
-          </div>
-
-
-        </div>
+<!--<button class='button button-full button-light'>-->
+  <div class="scan-div">
+<img ng-src='img/assets/tap-to-scan.png'  ng-click="scanBarcode()"/>
+</div>
+<!--</button>-->
+ <div class="location-div">
+   {{userlocation}}<br/>
+            <button class="button button-dark" ng-click="updatelocation()">Update Location</button>
 
          
-        
+        </div>
 
 
     </div>
 
-     <pre>{{barcode  |json}}</pre>
-      <pre>{{product  |json}}</pre> 
     </ion-content>
 
 

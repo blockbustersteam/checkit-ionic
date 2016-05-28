@@ -1,10 +1,86 @@
   <ion-view view-title="Item Information ">
     <ion-content class="background-maingrey">
 
+     
+          <!-- Distance -->
     
- 
+        
+        
+ <!-- Shows uo only if there is a product found -->
  
     <div class=" verify-card" ng-show="product">
+    <div class="row row-dark">
+      <div class="col col-33 top-middle">
+        
+         
+        <div class="verify-count-field light">
+          {{product.scancount}}
+          </div>
+          
+
+           <span class="verify-count-label">
+        Scan Count
+        </span>
+        
+        
+        
+        </div>
+         <div class="col col-33 top-middle">
+        
+        
+           <div class="verdict-count balanced" ng-show="distance.value<1">
+            <i class="icon ion-checkmark-circled result-icon"></i><br/>
+            OK
+          </div>
+          
+           <div class="verdict-count amber" ng-show="1<=distance.value && distance.value<5">
+            <i class="icon ion-help-circled result-icon"></i><br/>
+            ALERT
+          </div>
+          
+          <div class="verdict-count assertive" ng-show="5<=distance.value">
+            <i class="icon ion-alert-circled result-icon"></i><br/>
+            SUSPICIOUS
+          </div>
+          
+          
+          
+        </div>
+        
+         <div class="col col-33 top-middle">
+        
+             
+        <div ng-if="distance">
+        <div class="verify-count-field light">
+          
+          {{distance.value}}km 
+          
+          </div>
+<!--          
+          <div class="verdict-count balanced" ng-show="distance.value<1">
+            <i class="icon ion-ios-checkmark-outline"></i>
+            OK
+          </div>
+          
+           <div class="verdict-count amber" ng-show="1<=distance.value && distance.value<5">
+            <i class="icon ion-ios-help-outline"></i>
+            ALERT
+          </div>
+          
+          <div class="verdict-count assertive" ng-show="5<=distance.value">
+            <i class="icon ion-ios-close-outline"></i>
+            SUSPICIOUS
+          </div>-->
+          <span class="verify-count-label">
+        Distance
+        </span>
+        </div>  
+        
+        
+        </div>
+      
+      
+    </div>
     
  <div class="row row-dark2">
     <div class="col col-20 col-icon">
@@ -16,11 +92,12 @@
           {{product.name}}
           </div> 
           <div class="verify-manufacturer">
-          {{product.manufacturer}}
+          {{product.manufacturer}}, {{product.origin}}
           </div>   
           
-          </div> 
-    </div>
+      </div> 
+
+  </div>
           
     
 
@@ -31,7 +108,7 @@
       
       </div>
       
-      <div class="col col-60">
+      <div class="col col">
         <div class="verify-tracked-location-label">
           Tracked location:
           </div>
@@ -43,14 +120,17 @@
             
         </div>
         <div>
-            <button class="button button-outline button-light report-button">Thats not where I am</button>
+            <button class="button button-outline button-light report-button">
+              <!--<i class="icon ion-map icon-small"> </i>-->
+              View map</button>
             </div>
         
         
         </div>
   <div class="col col-20 col-icon">
-        <i class="icon ion-map verify-med-icon"> </i>
-         <span class="map-text"> Show Map </span>
+      
+        </div>  
+          
   </div>
   </div>
   
@@ -71,7 +151,7 @@
           <br/>
           <span class="verify-label-small"> Expiry: </span> 
           <span class="verify-field-small"> {{product.expdate}} </span>
-          
+          <br/>
           <img  class="verify-picture" ng-src="{{product.image}}"/>
           
           </div>    
@@ -85,13 +165,12 @@
         </div>
 
          
-        
 
 
     </div>
 
-     <pre>{{barcode  |json}}</pre>
-      <pre>{{product  |json}}</pre> 
+     <!--<pre>{{barcode  |json}}</pre>
+      <pre>{{product  |json}}</pre> -->
     </ion-content>
 
 

@@ -56,44 +56,26 @@ angular.module('starter.services', [])
   // Stubbing until webservices available
   var products = [
   {
-    id: 0,
-    manufacturer: "Johnson & Johnson",
+    "id": 0,
+    "manufacturer": "Johnson & Johnson",
     //picture: 'img/products/codral-day-night.png',
-    location: "123 Fake, St Lane Cove, Australia",
-    origin: "Australia",
-    scancount: "",
-  "barcode":"9300605042421",
-  "name":"Nivea Soft Moisturising Cream",
-  "image":"img/products/codral-day-night.png",
-  "expdate":"n/a",
-  "batchno":"54830974",
-  currentowner: "Chemist Warehouse"
- 
- 
+    "location": "200 Barangaroo ave, Sydney, Australia",
+    "origin": "Australia",
+    "scancount": "0",
+    "barcode":"3Z945S5JGV1H3DK",
+    "name":"Codral cold and flu",
+    "image":"codral-day-night.png",
+    "expdate":"Dec 2018",
+    "batchno":"54830974",
+    "currentowner": "Chemist Warehouse"
   }
 
 
   ];
 
-//    {  
-  
-  // id: 0,
-//     barcode: "9310059062371",  
-//     format: "EAN_13",
-//     productName: "Codral Cold and Flu",
-//     manufacturer: "Johnson & Johnson",
-//     batch: "650783",
-//     expiry: "Dec 2018",
-//     picture: 'img/products/codral-day-night.png',
-//     trackedLocation: "Chemist Warehouse, Lane Cove"
-// }
-    
   return {
     all: function() {
       return products;
-    },
-    remove: function(chat) {
-      chats.splice(chats.indexOf(chat), 1);
     },
     get: function(productId) {
       for (var i = 0; i < products.length; i++) {
