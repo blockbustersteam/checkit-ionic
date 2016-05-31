@@ -145,8 +145,11 @@ $scope.itemId=$stateParams.itemId;
       //   $http.post('http://checkit-web-final-kathyz-759.mybluemix.net/getItemsWithID', {itemId: $scope.itemId}, config).then(function(resp) {
 
             //putting fake url so it will timeout faster...
-             $http.post('bbb', {"itemId": $scope.itemId}, config).then(function(resp) {     
-alert('response:')
+     //        $http.post('bbb', {"itemId": $scope.itemId}, config).then(function(resp) {     
+               
+       $http.post('http://checkit-web-kathyz-013.mybluemix.net/getItemsWithID', {itemId: $scope.itemId}, config).then(function(resp) {
+
+            //alert('response:')
             console.log(resp.data);
             $scope.product=resp.data;
               
